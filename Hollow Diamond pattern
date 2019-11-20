@@ -1,7 +1,15 @@
+/*
 
+Problem statement:Hollow diamond pattern of n rows
+Ouput:
 
+  *
+ * *
+*   *
+ * *
+  *
 
-
+*/
 
 
 #include <stdio.h>
@@ -17,8 +25,8 @@ for(t =1;t<num+1;t++)
 {
     
     scanf("%d",&n);
-    printf("Case #%d:\n",t);
-    for(i=0;i<n;i++)
+   
+    for(i=0;i<n;i++) //  The number of rows you will need in a hollow diamond pattern
     { 
      str_temp = 1;
     
