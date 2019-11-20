@@ -1,0 +1,46 @@
+
+/*
+
+Problem statement:Right angled triangle of n rows
+Ouput:
+    *
+   **
+  ***
+ ****
+*****
+
+*/
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+int n ,str_temp= 0,i,j,num_test_cases = 0,x;
+  
+scanf("%d",&num_test_cases);
+    
+
+for(x=1;x<=num_test_cases;x++)
+{
+scanf("%d",&n);  //Number of rows needed
+
+for(i=0;i<n;i++)
+{   j = n-i-1;
+    while(j>0)
+    {
+        printf(" ");
+        j--;
+    }
+    str_temp = i + 1;
+    
+    while(str_temp > 0)
+    {   printf("*");
+        str_temp--;
+    }
+    printf("\n");
+    
+}
+}       
+}
