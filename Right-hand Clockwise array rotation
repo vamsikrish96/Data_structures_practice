@@ -1,0 +1,42 @@
+// Clockwise array rotation.
+   input - 1,2,3,4,5,6,7,8
+   output - 8,1,2,3,4,5,6,7
+
+public class Array_clockwise_rotation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			
+		int[] a = new int[] {1,2,3,4,5,6,7,8};
+		int total = 4;
+		int k = ((total)%a.length);
+		
+		
+		rev(a,0,a.length-1);
+		rev(a,0,k-1);
+		rev(a,k,a.length-1);
+	
+		for(int i = 0;i<a.length;i++)
+		{
+			System.out.print(a[i] + " ");
+		}
+		
+	}
+
+public static void rev(int[] a ,int low,int high)
+{
+	int p1 = low;
+	int p2 = high;
+	
+	while(p1 < p2) {
+	
+		int temp = a[p1];
+		a[p1] = a[p2];
+		a[p2] = temp;
+		p1++;
+		p2--;
+	}
+}
+	
+	
+}
