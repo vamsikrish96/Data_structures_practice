@@ -1,0 +1,68 @@
+package ps_1;
+
+import java.util.Scanner;
+
+public class Collecting_water {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner inp = new Scanner(System.in);
+		
+		int num_test = inp.nextInt();
+	
+		for(int t =0;t<num_test;t++)
+		{
+			int total_height = 0;
+			int n = inp.nextInt();
+			
+			int[] a = new int[n];
+			
+			int[] max_left = new int[n];
+			int[] max_right = new int[n];
+			
+			for(int i =0;i<n;i++)
+			{
+				a[i] = inp.nextInt();
+			}
+			
+			max_left[0] = a[0];
+			Find_max_left_heights(a,max_left,n);
+				
+			max_right[n-1] = a[n-1];
+			Find_max_right_heights(a,max_right,n);
+				
+			for(int j = 0;j<n;j++)
+			{
+				
+				total_height = total_height + (Math.min(max_left[j],max_right[j]) - a[j]);
+				
+			}
+				
+			System.out.println(total_height);	
+		}
+		
+	}
+	
+public static void Find_max_left_heights(int[] a,int[] max_left,int n)
+{
+	for(int i=1;i<n;i++)
+	{
+		max_left[i] = Math.max(max_left[i-1], a[i]);
+		
+	}
+	
+}
+
+public static void Find_max_right_heights(int[] a,int[] max_right,int n)
+{
+	for(int i=n-2;i>=0;i--)
+	{
+		max_right[i] = Math.max(max_right[i+1], a[i]);
+		
+	}
+	
+}
+
+
+}
