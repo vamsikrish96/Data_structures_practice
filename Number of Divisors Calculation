@@ -1,0 +1,41 @@
+package ps_1;
+import java.util.*;
+public class Divisor_opt {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		ArrayList<Integer> a = new ArrayList<>();
+		Scanner inp = new Scanner(System.in);
+		
+		System.out.println("Enter the element");
+		
+		int n = inp.nextInt();
+			
+		for(int i =1;i<=Math.sqrt(n);i=i+1)
+		{
+			
+			if((n%i) == 0)
+			{
+				if(i != (n/i))
+				{
+					a.add(i);
+					a.add(n/i);
+				}
+				else
+				{
+					a.add(i);
+				}
+			
+			}
+			
+			
+		}
+
+		System.out.println(a);
+		
+	}
+
+}
