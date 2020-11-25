@@ -1,0 +1,130 @@
+// Check whether the linked list is a palindrome
+package ps_1;
+
+public class Palindromic_linked_list {
+
+	static class Node
+	{
+		Node next;
+		int data;
+		
+		Node(int x)
+		{
+			
+			this.next = null;
+			this.data = x;
+			
+		}
+	}
+	
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// 2 3 4 5 4 3 2
+	
+	Node head = new Node(10);
+	Node temp = head;
+	insert_node(head,7);
+	insert_node(head.next,10);
+	//insert_node(head.next.next,3);
+	//insert_node(head.next.next.next,2);
+	//insert_node(head.next.next.next.next,2);
+	//insert_node(head.next.next.next.next.next,1);
+	
+		
+	//disp(temp);
+		
+	boolean result = check_palindrome(temp);
+	
+	System.out.println(result);
+	
+		
+	}
+public static void insert_node(Node head,int data)
+{
+	
+	head.next = new Node(data);
+	head = head.next;
+	
+}
+
+public static void disp(Node head)
+{
+	while(head != null)
+	{
+		System.out.println(head.data);
+		head = head.next;
+		
+	}
+}
+
+public static boolean check_palindrome(Node head)
+{	
+	
+	Node s_pointer = head;
+	Node start = head;
+	Node f_pointer = head;
+	
+	if(head.next == null)
+	{
+		return true;
+	}
+	
+	while((head.next != null)&&(head.next.next != null))
+	{
+		
+		
+		s_pointer = s_pointer.next;
+		f_pointer = f_pointer.next.next;
+		
+		head = head.next.next;
+	//	System.out.println("f_pointeris" + head.data);
+		
+		
+	}
+	Node mid_node = null;
+	
+	//System.out.println("The ans is" + s_pointer.data);
+	if(head.next == null)
+	{	
+		//s_pointer = s_pointer.next;
+		mid_node = s_pointer;
+	}
+	else
+	{
+		mid_node = s_pointer;
+	}
+	
+	
+		
+	Node p = null;
+	Node rev = mid_node.next;
+	while(rev != null)
+	{
+		Node temp = rev.next;
+		rev.next = p;
+		p = rev;
+		rev = temp;
+	}
+	
+	mid_node.next = p;
+	
+	while(p != null)
+	{
+		//System.out.println("vamsi");
+		if(p.data != start.data )
+		{
+			return false;
+		}
+		p = p.next;
+		start  = start.next;
+		
+	}
+	
+	return true;
+	
+	
+
+}
+
+}	
