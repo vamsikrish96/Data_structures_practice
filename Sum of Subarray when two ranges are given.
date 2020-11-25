@@ -1,0 +1,62 @@
+// Sum of Subarray when two ranges are given using prefix sum.
+
+package ps_1;
+import java.util.*;
+public class Sum_of_subarray {
+
+	public static void main(String[] args) {
+		
+		Scanner inp = new Scanner(System.in);
+		
+		int n = inp.nextInt();
+		int[] a = new int[n];
+		int sum = 0;
+		
+		//int[] a = new int[]{1,31,44,40,35,47,-6,-18,25,125};
+		
+		
+		for(int j =0;j<n;j++)
+		{
+			if(j>0)
+			{
+				a[j] = inp.nextInt();
+				a[j] = a[j] + a[j-1];
+				
+			}
+			
+			else
+			{
+				a[j] = inp.nextInt();
+			}
+			
+			
+			
+		}
+		
+		
+		int q = inp.nextInt();
+		
+		
+		for(int i = 0;i<q;i++)
+		{	sum = 0;
+			int start = inp.nextInt();
+			int end = inp.nextInt();
+			
+			if(start != 0)
+			{
+				sum = a[end] - a[start-1];
+			}
+			
+			else
+			{
+				sum = a[end];
+			}
+			
+			System.out.println(sum);
+		}
+		
+		
+		
+	}
+
+}
