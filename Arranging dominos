@@ -1,0 +1,48 @@
+package ps_1;
+
+import java.util.Scanner;
+import java.util.*;
+public class Arranging_dominos {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+Scanner inp = new Scanner(System.in);
+		
+		
+		
+		
+		System.out.println("Enter the number of columns");
+		
+		int n = inp.nextInt();
+		int m = 1000000007;
+		int[] d = new int[n+1] ;
+		//int[] W_0 = new int[n+1] ;
+		
+		d[0] = 1;
+		d[1] = 1;
+		for(int i =2;i<=n;i++)
+		{
+			if(i>4)
+			{
+				d[i] = ( (d[i-2] + d[i-1])%m  + (8*d[i-5]))%m;
+			}
+			
+			else
+			{
+				d[i] = d[i-2] + d[i-1];
+			}
+			
+			
+		}
+		
+	
+		
+		System.out.println("The number of arrangements is " + (d[n])%m);
+
+	}
+	
+
+}
