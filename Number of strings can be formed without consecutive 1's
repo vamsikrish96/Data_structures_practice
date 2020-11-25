@@ -26,7 +26,7 @@ public class B_String_with_no_1 {
 		
 	
 		
-		System.out.println(((W_1[n] + W_0[n])%m));
+		System.out.println(((W_1[n] + W_0[n])%m))
 
 	}
 
