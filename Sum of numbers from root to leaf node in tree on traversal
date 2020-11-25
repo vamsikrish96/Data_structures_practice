@@ -1,0 +1,96 @@
+package ps_1;
+
+import ps_1.Vertical_order_tree_sol.Node;
+import java.util.*;
+public class Sum_of_num_from_root {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		long tot = 0;
+		int[] a  = new int[]{10000,10001,10002,10003,10004,10005,10006,10007,10008,10009,10010};
+		Node root = null;
+		for(int i =0;i<5;i++)
+		{
+			root = Insert(root,a[i]);
+			
+		}
+	//	String s1 = Integer.toString();
+		Node tr = root;
+		for(int j=0;j<5;j++)
+		{	root = tr;
+			String s1 = "";
+			long s2 = 0;
+			while((root != null))
+			{
+				if(a[j] > root.data)
+				{	s1 = s1 + Integer.toString(root.data);
+					s2 = Long.parseLong(s1);
+					s2  = s2 % 1000000007;
+					s1 = Long.toString(s2);
+					root = root.right;
+					
+					
+					
+				}
+				else if(a[j] < root.data)
+				{	s1 = s1 + Integer.toString(root.data);
+					s2 = Long.parseLong(s1);
+					s2  = s2 % 1000000007;
+					s1 = Long.toString(s2);
+					root = root.left;
+					
+				}
+				else
+				{
+					if((root.left == null)&&(root.right == null))
+					{
+						s1 = s1 + Long.toString(root.data) ;
+						System.out.println(s1);
+						long sum = Long.parseLong(s1); 
+						tot = tot + sum;
+					}
+					break;
+				}
+				
+			}
+		}
+		
+		System.out.println(tot);
+		
+		
+		
+		
+		
+		
+	}
+
+	public static Node Insert(Node root,int element)
+	{
+		if(root == null)
+		{
+			return (new Node(element));
+			
+		}
+		
+		if(element > root.data)
+		{
+			root.right = Insert(root.right,element);
+		}
+		else
+		{
+			root.left = Insert(root.left,element);
+		}
+		
+		return root;
+	}	
+	
+	
+	
+	
+	
+	
+	
+}
