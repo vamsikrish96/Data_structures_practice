@@ -1,0 +1,123 @@
+//Find the smallest window in a string containing all characters of another string
+
+package ps_1;
+
+import java.util.Scanner;
+
+public class Enclosing_substring {
+
+	public static void main(String[] args) {
+
+		int num_length = 256;
+		Scanner inp = new Scanner(System.in);
+		
+		int num_test = inp.nextInt();
+	
+		for(int t =0;t<num_test;t++)
+		{
+			int min_len = Integer.MAX_VALUE;
+			int index_l = 0;
+			int index_r = 0;
+			String pat = inp.next();
+			char[] p = pat.toCharArray();
+			int pattern_length = p.length;
+			
+			String s1 = inp.next();
+			char[] s = s1.toCharArray();
+			if(pat.length() > s1.length())
+			{
+				System.out.println(-1);
+			}
+			
+			int[] pat_arr = new int[num_length];
+			int[] s1_arr = new int[num_length];
+			
+			for(int i = 0;i<pat.length();i++)
+			{
+				
+				//System.out.println("The index_l is " + p[i]);
+				pat_arr[p[i]] = pat_arr[p[i]] + 1;
+			}
+	
+			int l = 0; 
+			while(index_l < s1.length()) 
+			{
+				
+				if((pat_arr[s[index_l]] != 0))
+				{
+					
+					if((s1_arr[s[index_l]] < pat_arr[s[index_l]]))
+					{
+						//System.out.println("The sring alphabets are " + s[index_l]);
+						s1_arr[s[index_l]] = s1_arr[s[index_l]] + 1;
+						//System.out.println("increment");
+						l++;
+					}
+					else
+					{
+						//System.out.println("The sring alphabets are " + s[index_l]);
+						s1_arr[s[index_l]] = s1_arr[s[index_l]] + 1;
+					}
+					index_l++;
+				}
+				else
+				{
+					//System.out.println("The sring alphabets are else " + s[index_l]);
+					index_l++;
+					
+				}
+				
+				if(l == pattern_length)
+				{	
+					//System.out.println("vamsi");
+					
+					while((index_r <= index_l))
+					{
+						if(s1_arr[s[index_r]] == 0)
+						{
+							index_r++;
+							continue;
+						}
+						
+						
+						if((s1_arr[s[index_r]] >= pat_arr[s[index_r]]))
+						{
+							s1_arr[s[index_r]] = s1_arr[s[index_r]] - 1;
+							
+							//System.out.println("The index_r is " + s[index_r]);
+							if(s1_arr[s[index_r]] < pat_arr[s[index_r]])
+							{
+								l--;
+								break;
+							}
+							index_r++;
+						}
+												
+					}
+					
+					//System.out.println("The r index is " +s[index_r]);
+					int length_wind = index_l - index_r ;
+					//System.out.println(length_wind);
+					min_len = Math.min(min_len,length_wind);
+					index_r++;
+					
+				}
+				
+				
+				
+				
+			}
+			
+			if(min_len == Integer.MAX_VALUE)
+			{
+				System.out.println(-1);
+			}
+			else
+			{
+				System.out.println(min_len);
+			}	
+		}
+		
+	}
+
+}
