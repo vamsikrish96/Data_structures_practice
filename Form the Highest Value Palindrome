@@ -1,0 +1,92 @@
+//Form the Highest Value Palindrome with the given input
+
+package problem_solving_2;
+
+public class Highest_value_palindrome {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String s1 = "932239";
+		int k = 2;
+		char[] a = s1.toCharArray();
+		int low = 0;
+		int high = a.length - 1;
+		boolean flag  = true;
+		while((low<=high))
+		{	
+			if(a[low] != a[high])
+			{
+				if(a[low] > a[high])
+				{
+					a[high] = a[low];
+				}
+				else
+				{
+					a[low] = a[high];
+				}
+				
+				k--;
+				if(k < 0)
+				{	flag = false;
+					System.out.println("-1");
+					break;
+				}
+				
+			}
+
+			
+			low++;
+			high--;
+			
+			
+		}
+	//	for(int t = 0;t<a.length;t++)
+	//	{
+	//		System.out.println(a[t]);
+	//	}
+		
+if(flag  ==  true)
+ {
+	 low = 0;
+	 high =  a.length -1;
+	 
+	while(low<=high)
+	 {
+		
+		if(low == high)
+		{
+			if(k > 0)
+			{
+				a[low] = '9';
+				k--;
+			}
+				
+			
+		}
+		
+		
+		if((k >=2)&&(a[low] < '9') && (a[low] == s1.charAt(low)) && ((a[high] == s1.charAt(high))))
+		{
+		 a[low] = a[high] = '9';
+		 k = k -2;
+		
+		}
+		else if((k >=1)&&(a[low] < '9') && (a[low] != s1.charAt(low)) || ((a[high] != s1.charAt(high))))
+		{	
+			a[low] = a[high] = '9';
+			 k = k -1;
+			 
+		}
+		low++;
+		 high--;
+	 }
+			
+	
+  }
+	
+		String ans = new String(a);
+		System.out.println(ans);
+}
+
+}
