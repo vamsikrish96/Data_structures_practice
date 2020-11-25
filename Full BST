@@ -1,0 +1,82 @@
+// Full BST question in java
+
+package ps_1;
+import java.util.*;
+import ps_1.Vertical_order_tree_sol.Node;
+public class Full_BST {
+
+	/**
+	 * @param args
+	 * 
+	 * 
+	 */
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Queue<Node> q = new LinkedList<>();
+		
+		int flag = 0;
+		int[] a  = new int[]{1,2,3,4,5};
+		Node root = null;
+		for(int i =0;i<5;i++)
+		{
+			root = Insert(root,a[i]);
+			
+		}
+		
+		q.add(root);
+		while(q.isEmpty() != true)
+		{
+			Node temp = q.poll();
+			
+			if((temp.left != null) && (temp.right != null))
+			{
+				q.add(temp.left);
+				q.add(temp.right);
+			}
+			else if((temp.left == null) && (temp.right == null))
+			{
+				continue;
+			}
+			else
+			{
+				System.out.println("False");
+				flag = 1;
+				break;
+			}
+			
+		}
+		
+		if(flag != 1)
+		{
+			System.out.println("True");
+		}
+		
+	}
+
+	
+	public static Node Insert(Node root,int element)
+	{
+		if(root == null)
+		{
+			return (new Node(element));
+			
+		}
+		
+		if(element > root.data)
+		{
+			root.right = Insert(root.right,element);
+		}
+		else
+		{
+			root.left = Insert(root.left,element);
+		}
+		
+		return root;
+	}
+	
+	
+	
+}
